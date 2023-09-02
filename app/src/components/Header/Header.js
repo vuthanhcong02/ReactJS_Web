@@ -12,7 +12,7 @@ import { faBell, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 export default function Header() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   return (
     <header className="header">
       <Navbar expand="lg" className="">
@@ -29,36 +29,58 @@ export default function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link
-                as={NavLink}
-                to="/"
-                style={({ isActive }) => ({
-                  color: isActive ? "black" : "",
-                  fontWeight: isActive ? "bold" : "",
-                })}
-              >
-                Home
-              </Nav.Link>
-              <Nav.Link
-                as={NavLink}
-                to="/dashboard"
-                style={({ isActive }) => ({
-                  color: isActive ? "black" : "",
-                  fontWeight: isActive ? "bold" : "",
-                })}
-              >
-                Dashboard
-              </Nav.Link>
-              <Nav.Link
-                as={NavLink}
-                to="/courses"
-                style={({ isActive }) => ({
-                  color: isActive ? "black" : "",
-                  fontWeight: isActive ? "bold" : "",
-                })}
-              >
-                Các khóa học của tôi
-              </Nav.Link>
+              {login ? (
+                <>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/"
+                    style={({ isActive }) => ({
+                      color: isActive ? "black" : "",
+                    })}
+                  >
+                    Trang chủ
+                  </Nav.Link>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/dashboard"
+                    style={({ isActive }) => ({
+                      color: isActive ? "black" : "",
+                    })}
+                  >
+                    Dashboard
+                  </Nav.Link>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/courses"
+                    style={({ isActive }) => ({
+                      color: isActive ? "black" : "",
+                    })}
+                  >
+                    Các khóa học của tôi
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/"
+                    style={({ isActive }) => ({
+                      color: isActive ? "black" : "",
+                    })}
+                  >
+                    Trang chủ
+                  </Nav.Link>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/contact"
+                    style={({ isActive }) => ({
+                      color: isActive ? "black" : "",
+                    })}
+                  >
+                    Thông tin liên hệ
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
             {login ? (
               <>
@@ -67,20 +89,17 @@ export default function Header() {
                     <FontAwesomeIcon icon={faBell} />
                     <sup className="number-notification">2</sup>
                   </div>
-                  <img
-                    src="https://picsum.photos/200"
-                    className="avatar"
-                    alt=""
-                  />
                   <DropdownButton
                     id="dropdown-item-button"
-                    title="Vũ Thành Công"
+                    title={<img
+                        src="https://picsum.photos/200"
+                        className="avatar"
+                        alt=""
+                      />}
                     variant="none"
                     border="none"
                   >
-                    <Dropdown.Item href="#/action-1">
-                      Thông tin tài khoản
-                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Thông tin tài khoản</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Cài đặt</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">Đăng xuất</Dropdown.Item>
                   </DropdownButton>
@@ -89,8 +108,8 @@ export default function Header() {
             ) : (
               <>
                 <Nav.Link as={Link} to="/login">
-                    <FontAwesomeIcon icon={faUser} style={{marginRight: '5px'}}/>
-                    Đăng nhập
+                  <FontAwesomeIcon icon={faUser} style={{ marginRight: "5px" }}/>
+                  Đăng nhập
                 </Nav.Link>
               </>
             )}
