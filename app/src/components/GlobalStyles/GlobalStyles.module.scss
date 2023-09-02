@@ -1,7 +1,10 @@
 @import'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+/* The following line can be included in a src/App.scss */
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 :root{
     --primaryColor: #df0077;
