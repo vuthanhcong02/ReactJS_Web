@@ -20,21 +20,21 @@ export default function Footer() {
             </ul>
           </div>
           <div className="col-md-4 column-center">
-            <div class="supportemail">
+            <div className="supportemail">
               <Link
                 to="https://vietcodedi.com/user/contactsitesupport.php"
-                class="btn contactsitesupport btn-outline-info"
+                className="btn contactsitesupport btn-outline-info"
               >
                 Contact site support
               </Link>
             </div>
 
-            <div class="logininfo">
+            <div className="logininfo">
               You are not logged in. (
               <Link to="https://vietcodedi.com/login/index.php">Log in</Link>)
             </div>
 
-            <div class="tool_dataprivacy">
+            <div className="tool_dataprivacy">
               <Link to="https://vietcodedi.com/admin/tool/dataprivacy/summary.php">
                 Data retention summary
               </Link>
@@ -43,13 +43,13 @@ export default function Footer() {
               Get the mobile app
             </Link>
 
-            <div class="tool_usertours-resettourcontainer"></div>
+            <div className="tool_usertours-resettourcontainer"></div>
           </div>
           <div className="col-md-4 column-right">
             <Link to="https://download.moodle.org/mobile">
               Get the mobile app
             </Link>
-            <div class="stores">
+            <div className="stores">
               <Link href="https://play.google.com/store/apps/details?id=com.moodle.moodlemobile">
                 <img
                   src="https://vietcodedi.com/theme/moove/pix/store_google.svg"

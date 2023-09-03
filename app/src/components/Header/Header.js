@@ -12,7 +12,7 @@ import { faBell, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 export default function Header() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   return (
     <header className="header">
       <Navbar expand="lg" className="">
@@ -51,7 +51,7 @@ export default function Header() {
                   </Nav.Link>
                   <Nav.Link
                     as={NavLink}
-                    to="/courses"
+                    to="/my-courses"
                     style={({ isActive }) => ({
                       color: isActive ? "black" : "",
                     })}

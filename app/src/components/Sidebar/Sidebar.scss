@@ -1,0 +1,23 @@
+.name-sidebar{
+        margin: 30px 0 0 20px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        span{
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .active-name-sidebar{
+            text-decoration: underline;
+        }
+}
+.item-sidebar{
+    margin: 10px 30px;
+    ul{
+        cursor: pointer;
+        list-style-type: circle;
+        font-size: 17px;
+    }
+}

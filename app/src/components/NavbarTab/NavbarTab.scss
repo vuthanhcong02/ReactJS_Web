@@ -1,0 +1,10 @@
+.nav-item{
+    a{
+        text-decoration: none;
+        color: white !important;
+        margin:8px 10px;
+    }
+}
+.tab_active{
+    border-bottom: 3px solid var(--primaryColor);
+}

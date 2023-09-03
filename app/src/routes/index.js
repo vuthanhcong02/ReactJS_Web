@@ -1,6 +1,7 @@
 import Home from "../pages/Home/Home";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Course from "../pages/Course/Course";
+import CourseDetail from "../pages/CourseDetail/CourseDetail";
 const publicRoutes = [
     {
         path: '/',
@@ -11,9 +12,12 @@ const publicRoutes = [
         component: Dashboard
     },
     {
-        path: '/courses',
+        path: '/my-courses',
         component: Course
     }
 ];
-const privateRoutes = [];
+
+const privateRoutes = [
+    {path: '/course/view/:id', component: CourseDetail},
+];
 export {publicRoutes, privateRoutes};
