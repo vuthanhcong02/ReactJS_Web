@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 import './Home.scss';
 import CartCourse from '../../components/CartCourse/CartCourse';
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
               </div>
            </div>
         </div>
+        <Footer/>
     </>
   )
 }
