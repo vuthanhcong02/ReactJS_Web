@@ -2,11 +2,11 @@ import React from "react";
 import "./Sidebar.scss";
 import {useState} from "react";
 export default function Sidebar() {
-    const [showGeneral, setShowGeneral] = useState(false);
+    const [showAttendance, setShowAttendance] = useState(false);
     const [showBaiTap, setShowBaiTap] = useState(false);
     const [showKiemTra, setShowKiemTra] = useState(false);
     const handleShow1 = (value) => {
-        setShowGeneral(!showGeneral);
+        setShowAttendance(!showAttendance);
     }
     const handleShow2 = (value) => {
         setShowBaiTap(!showBaiTap);
@@ -16,20 +16,8 @@ export default function Sidebar() {
     }
   return (
     <>
-       <div className="name-sidebar">
-         <span to="" onClick={()=>handleShow1('General')}>1.General</span>
-      </div>
-      {showGeneral && (
-          <div className="item-sidebar">
-          <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-          </ul>
-        </div>
-      )}
       <div className="name-sidebar">
-        <span onClick={() => handleShow2('Bài tập')}>2.Bài tập</span>
+        <span onClick={() => handleShow2('Bài tập')}>1.Bài tập</span>
       </div>
       {showBaiTap && (
           <div className="item-sidebar">
@@ -41,7 +29,7 @@ export default function Sidebar() {
         </div>
       )}
       <div className="name-sidebar">
-        <span onClick={() => handleShow3('Kiểm tra')}>3.Kiểm tra</span>
+        <span onClick={() => handleShow3('Kiểm tra')}>2.Kiểm tra</span>
       </div>
     {showKiemTra && (
           <div className="item-sidebar">
@@ -52,6 +40,18 @@ export default function Sidebar() {
           </ul>
         </div>
     )}
+     <div className="name-sidebar">
+        <span onClick={() => handleShow1('Điểm danh')}>3.Điểm danh</span>
+      </div>
+      {showAttendance && (
+          <div className="item-sidebar">
+          <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+          </ul>
+        </div>
+      )}
     </>
   );
 }
