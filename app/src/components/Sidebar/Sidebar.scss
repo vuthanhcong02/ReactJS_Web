@@ -3,21 +3,30 @@
         font-size: 17px;
         font-weight: bold;
         cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 8px;
         span{
             text-decoration: none;
             &:hover{
                 text-decoration: underline;
             }
         }
-        .active-name-sidebar{
-            text-decoration: underline;
-        }
+}
+.active-name-sidebar{
+    background-color: var(--primaryColor)!important;
+    color: white !important;
 }
 .item-sidebar{
     margin: 10px 30px;
     ul{
         cursor: pointer;
         list-style-type: circle;
-        font-size: 17px;
+        font-size: 15px;
+    }
+    .active-item-sidebar{
+        text-decoration: underline;
+    }
+    .active-item-sidebar:hover{
+        text-decoration: underline;
     }
 }

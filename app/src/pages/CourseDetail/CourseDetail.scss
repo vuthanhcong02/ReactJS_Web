@@ -1,6 +1,6 @@
 .wrapper-course-details{
     display: flex;
-    height: 500px;
+    height: 100%;
     .sidebar{
         margin:40px 20px 0 20px;
         background-color:rgb(248, 249, 250);
@@ -11,12 +11,20 @@
     }
     .main-content{
         margin:40px 20px 0 20px;
-        border-radius: 10px;
         width: 80%;
         height: 100%;
-        background-color: white;
-        .title-detail{
-            margin: 20px 0 0 20px;
+        .title-detail-course{
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+
+        }
+        .more-detail-course{
+            padding: 20px;
+            border-radius: 7px;
+            margin-top:30px;
+            background-color: white;
+
         }
     }
 }

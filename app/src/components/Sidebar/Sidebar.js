@@ -1,54 +1,70 @@
 import React from "react";
 import "./Sidebar.scss";
 import {useState} from "react";
-export default function Sidebar() {
-    const [showAttendance, setShowAttendance] = useState(false);
-    const [showBaiTap, setShowBaiTap] = useState(false);
-    const [showKiemTra, setShowKiemTra] = useState(false);
-    const handleShow1 = (value) => {
-        setShowAttendance(!showAttendance);
+export default function Sidebar({handleToggleItem}) {
+  const [sidebarState, setSidebarState] = useState({
+    showAttendance: false,
+    showBaiTap: false,
+    showKiemTra: false,
+  });
+
+  const [activeItemSidebar, setActiveItemSidebar] = useState(null);
+  const [activeItemOption, setActiveItemOption] = useState(null);
+  const handleShow = (name) => {
+    const updatedState = { ...sidebarState };
+    if (name === 'showBaiTap') {
+      updatedState.showKiemTra = false;
+      updatedState.showAttendance = false;
     }
-    const handleShow2 = (value) => {
-        setShowBaiTap(!showBaiTap);
+    if (name === 'showKiemTra') {
+      updatedState.showBaiTap = false;
+      updatedState.showAttendance = false;
     }
-    const handleShow3 = (value) => {
-        setShowKiemTra(!showKiemTra);
+    if (name === 'showAttendance') {
+      updatedState.showBaiTap = false;
+      updatedState.showKiemTra = false;
     }
+    updatedState[name] = !updatedState[name];
+    setSidebarState(updatedState);
+    setActiveItemSidebar(name);
+  };
+  const handleClickItem = (name) => {
+    setActiveItemOption(name);
+    handleToggleItem(name);
+  }
   return (
     <>
-      <div className="name-sidebar">
-        <span onClick={() => handleShow2('Bài tập')}>1.Bài tập</span>
+      <div className={`name-sidebar ${activeItemSidebar === 'showBaiTap' ? 'active-name-sidebar' : ''}`}>
+        <span onClick={() => handleShow('showBaiTap')}>1.Bài tập</span>
       </div>
-      {showBaiTap && (
-          <div className="item-sidebar">
+      {sidebarState.showBaiTap && (
+        <div className="item-sidebar">
           <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
+            <li onClick={() => handleClickItem('BaiTap1')} className={activeItemOption === 'BaiTap1' ? 'active-item-sidebar' : ''}>Bài tập 1</li>
+            <li onClick={() => handleClickItem('BaiTap2')} className={activeItemOption === 'BaiTap2' ? 'active-item-sidebar' : ''}>Bài tập 2</li>
+            <li onClick={() => handleClickItem('BaiTap3')} className={activeItemOption === 'BaiTap3' ? 'active-item-sidebar' : ''}>Bài tập 3</li>
           </ul>
         </div>
       )}
-      <div className="name-sidebar">
-        <span onClick={() => handleShow3('Kiểm tra')}>2.Kiểm tra</span>
+      <div className={`name-sidebar ${activeItemSidebar === 'showKiemTra' ? 'active-name-sidebar' : ''}`}>
+        <span onClick={() => handleShow('showKiemTra')}>2.Kiểm tra</span>
       </div>
-    {showKiemTra && (
-          <div className="item-sidebar">
+      {sidebarState.showKiemTra && (
+        <div className="item-sidebar">
           <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
+            <li onClick={() => handleClickItem('KiemTra1')} className={activeItemOption === 'KiemTra1' ? 'active-item-sidebar' : ''}>Bài kiểm tra 1</li>
+            <li onClick={() => handleClickItem('KiemTra2')} className={activeItemOption === 'KiemTra2' ? 'active-item-sidebar' : ''}>Bài kiểm tra 2</li>
+            <li onClick={() => handleClickItem('KiemTra3')} className={activeItemOption === 'KiemTra3' ? 'active-item-sidebar' : ''}>Bài kiểm tra 3</li>
           </ul>
         </div>
-    )}
-     <div className="name-sidebar">
-        <span onClick={() => handleShow1('Điểm danh')}>3.Điểm danh</span>
+      )}
+      <div className={`name-sidebar ${activeItemSidebar === 'showAttendance' ? 'active-name-sidebar' : ''}`}>
+        <span onClick={() => handleShow('showAttendance')}>3.Điểm danh</span>
       </div>
-      {showAttendance && (
-          <div className="item-sidebar">
+      {sidebarState.showAttendance && (
+        <div className="item-sidebar">
           <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
+            <li onClick={() => handleClickItem('DiemDanh')} className={activeItemOption === 'DiemDanh' ? 'active-item-sidebar' : ''}>Điểm danh</li>
           </ul>
         </div>
       )}
