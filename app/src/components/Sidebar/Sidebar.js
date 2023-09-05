@@ -1,6 +1,10 @@
 import React from "react";
 import "./Sidebar.scss";
 import {useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBook} from "@fortawesome/free-solid-svg-icons";
+import {faHighlighter} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardUser} from "@fortawesome/free-solid-svg-icons";
 export default function Sidebar({handleToggleItem}) {
   const [sidebarState, setSidebarState] = useState({
     showAttendance: false,
@@ -35,7 +39,10 @@ export default function Sidebar({handleToggleItem}) {
   return (
     <>
       <div className={`name-sidebar ${activeItemSidebar === 'showBaiTap' ? 'active-name-sidebar' : ''}`}>
-        <span onClick={() => handleShow('showBaiTap')}>1.Bài tập</span>
+        <FontAwesomeIcon icon={faBook} style={{margin: '0 10px'}}/>
+        <span onClick={() => handleShow('showBaiTap')}>
+          Bài tập
+        </span>
       </div>
       {sidebarState.showBaiTap && (
         <div className="item-sidebar">
@@ -47,7 +54,8 @@ export default function Sidebar({handleToggleItem}) {
         </div>
       )}
       <div className={`name-sidebar ${activeItemSidebar === 'showKiemTra' ? 'active-name-sidebar' : ''}`}>
-        <span onClick={() => handleShow('showKiemTra')}>2.Kiểm tra</span>
+        <FontAwesomeIcon icon={faHighlighter} style={{margin: '0 10px'}}/>
+        <span onClick={() => handleShow('showKiemTra')}>Kiểm tra</span>
       </div>
       {sidebarState.showKiemTra && (
         <div className="item-sidebar">
@@ -59,7 +67,8 @@ export default function Sidebar({handleToggleItem}) {
         </div>
       )}
       <div className={`name-sidebar ${activeItemSidebar === 'showAttendance' ? 'active-name-sidebar' : ''}`}>
-        <span onClick={() => handleShow('showAttendance')}>3.Điểm danh</span>
+        <FontAwesomeIcon icon={faClipboardUser} style={{margin: '0 10px'}}/>
+        <span onClick={() => handleShow('showAttendance')}>Điểm danh</span>
       </div>
       {sidebarState.showAttendance && (
         <div className="item-sidebar">
