@@ -36,6 +36,7 @@ export default function Header() {
                     to="/"
                     style={({ isActive }) => ({
                       color: isActive ? "black" : "",
+                      fontWeight: isActive ?"600":""
                     })}
                   >
                     Trang chủ
@@ -45,6 +46,7 @@ export default function Header() {
                     to="/dashboard"
                     style={({ isActive }) => ({
                       color: isActive ? "black" : "",
+                      fontWeight: isActive ?"600":""
                     })}
                   >
                     Dashboard
@@ -54,6 +56,7 @@ export default function Header() {
                     to="/my-courses"
                     style={({ isActive }) => ({
                       color: isActive ? "black" : "",
+                      fontWeight: isActive ?"600":""
                     })}
                   >
                     Các khóa học của tôi

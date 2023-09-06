@@ -42,7 +42,7 @@ export default function CourseDetail() {
                 </div>
                 <div className="main-content">
                     <div className="title-detail-course">
-                        {toggleTab === 'course' && <InforCourse />}
+                        {toggleTab === 'course' && <InforCourse/>}
                         {toggleTab === 'notification' && <InforNotification />}
                         {toggleTab === 'document' && <InforDocument />}
                     </div>
