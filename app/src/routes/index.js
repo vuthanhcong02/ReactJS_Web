@@ -1,6 +1,6 @@
 import Home from "../pages/Home/Home";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Course from "../pages/Course/Course";
+import Course from "../pages/MyCourse/MyCourse";
 import CourseDetail from "../pages/CourseDetail/CourseDetail";
 const publicRoutes = [
     {

@@ -1,7 +1,7 @@
 import React from 'react'
 import './CardCourse.scss'
 import { Link } from "react-router-dom";
-export default function CartCourse() {
+export default function CardCourse() {
   return (
     <>
         <div className='course d-flex flex-column'>
