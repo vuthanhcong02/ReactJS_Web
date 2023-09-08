@@ -32,14 +32,9 @@
         padding: 10px 30px 20px 10px;
         .my__course__item{
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             margin:0 40px 0 0 ;
-        }
-        .clear__icon{
-            cursor: pointer;
-            font-size: 30px;
-            color: #6a737b;
         }
     }
 }   

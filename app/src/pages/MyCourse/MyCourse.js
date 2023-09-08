@@ -8,9 +8,6 @@ import Select from '@mui/material/Select';
 import './MyCourse.scss'
 import Form from 'react-bootstrap/Form';
 import CardCourse from '../../components/CardCourse/CardCourse';
-import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 export default function MyCourse() {
   const [allCourse, setAllCourse] = React.useState('');
   const [sortBy, setSortBy] = React.useState('');
@@ -52,13 +49,13 @@ export default function MyCourse() {
               className=" mr-sm-2"
               style={{width: '16%',border: '#6a737b 1px solid', margin: '0 10px'}}
             />
-            <FormControl sx={{ m: 0, minWidth: 200 }} size="small">
-              <InputLabel id="demo-select-small-label">Sort by course name</InputLabel>
+            <FormControl sx={{ m: 0, minWidth: 100 }} size="small">
+              <InputLabel id="demo-select-small-label">Sort by</InputLabel>
               <Select
                 labelId="demo-select-small-label"
                 id="demo-select-small"
                 value={sortBy}
-                label="Sort by course name"
+                label="Sort by"
                 onChange={handleChangeSort}
               >
                 <MenuItem value="default">
@@ -69,26 +66,10 @@ export default function MyCourse() {
             </FormControl>
 
           </div>
-          <hr/>
           <div className="my__course__list">
               <div className="my__course__item">
-                <CardCourse/>
-                <Tooltip title="Xóa khỏi danh sách">
-                  <IconButton>
-                    <DeleteIcon />
-                  </IconButton>
-                </Tooltip>
+                  <CardCourse moreBtn={true}/>             
               </div>
-              <hr/>
-              <div className="my__course__item">
-                <CardCourse/>
-                <Tooltip title="Xóa khỏi danh sách">
-                  <IconButton>
-                    <DeleteIcon />
-                  </IconButton>
-                </Tooltip>
-              </div>
-
           </div>
       </div>
       <Footer/>
