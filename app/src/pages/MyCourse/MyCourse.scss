@@ -23,18 +23,15 @@
             outline: none;
             color:#6a737b;
             margin-right: 10px;
-            border: 1px solid #6a737b;
         }
     }
     .my__course__list{
         display: flex;
         flex-direction: column;
-        padding: 10px 30px 20px 10px;
+        padding: 10px -25px 20px 10px;
         .my__course__item{
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin:0 40px 0 0 ;
+            flex-wrap: wrap;
         }
     }
 }   

@@ -69,6 +69,9 @@ export default function MyCourse() {
           <div className="my__course__list">
               <div className="my__course__item">
                   <CardCourse moreBtn={true}/>             
+                  <CardCourse moreBtn={true}/>             
+                  <CardCourse moreBtn={true}/>             
+                  <CardCourse moreBtn={true}/>             
               </div>
           </div>
       </div>

@@ -1,0 +1,37 @@
+.dashboard__heading{
+    margin: 40px 0 20px 0;
+    font-weight: 600;
+}
+.dashboard__wrapper{
+    background-color: white;
+    height: 100%;
+    border-radius: 5px;
+    padding: 25px;
+}
+.dashboard__filter__search{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .dashboard__search{
+        width: 600px;
+    }
+}
+.dashboard__calendar__title{
+    display: flex;
+    justify-content: space-between;
+    margin:20px 0;
+
+    button{
+        background-color: var(--primaryColor);
+        color: white;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+    }
+}
+.dashboard__calendar__main{
+    border:1px solid #e0e0e0;
+    padding: 10px;
+}
