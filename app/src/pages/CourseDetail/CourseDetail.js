@@ -58,7 +58,9 @@ export default function CourseDetail() {
                     }
                 </div>
            </div>
-    <Footer/>
+        <div className="footer__in__sidebar">
+            <Footer/>
+        </div>
    </>
   )
 }
