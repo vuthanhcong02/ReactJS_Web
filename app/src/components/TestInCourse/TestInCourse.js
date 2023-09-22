@@ -1,42 +1,64 @@
 import React from 'react'
+import { useState } from 'react';
 import './TestInCourse.scss'
 import { Button,Space } from 'antd';
+import questions from './questions';
 export default function TestInCourse() {
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const handleOptionClick = (option,id) => {
+    if (selectedOptions[id] === option) {
+      // Nếu đáp án đã được chọn mà lại được nhấp lần nữa, hãy bỏ active nó
+      setSelectedOptions({
+        ...selectedOptions,
+        [id]: null
+      });
+    } else {
+      // Nếu đáp án khác được chọn, hãy chọn đáp án mới và bỏ active đáp án trước đó (nếu có)
+      setSelectedOptions({
+        ...selectedOptions,
+        [id]: option
+      });
+    }
+  };
+  const handleNextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1);
+  }
+  const handlePrevQuestion = () => {
+    setCurrentQuestion(currentQuestion - 1);
+  }
+  const handleClicktoQuestion = (id) => {
+    setCurrentQuestion(id-1);
+  }
+  console.log(selectedOptions);
   return (
-    <div className='container mt-4'>
+    <div className='container test__wrapper'>
         <div className='row'>
           <div className='col-md-7 question__wrapper'>
-            <label className='container mt-5 fw-bold'>Question 1</label>
+            <label className='container mt-5 fw-bold'>Question {currentQuestion+1}</label>
             <div className='question__text container mt-3 '>
-                <p>lorem ipsum dolor sit amet consectetur adipisicing elit
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit
+                <p>
+                    {questions[currentQuestion].questionText}
                 </p>
             </div>
             <div className='answer__choose container'>
               <Space direction="vertical" style={{ width: '100%' , marginTop:'10px'}}>
-                  <Button block size="large">
-                    <label>A</label>
-                    lorem ipsum dolor
-                  </Button>
-                  <Button block size="large">
-                    <label>B</label>
-                    lorem ipsum dolor
-                  </Button>
-                  <Button block size="large">
-                    <label>C</label>
-                    lorem ipsum dolor
-                  </Button>
-                  <Button block size="large">
-                    <label>D</label>
-                    lorem ipsum dolor
-                  </Button>
+                      { questions[currentQuestion].answerOptions.map((answer,index) =>(
+                         <Button block size="large"
+                         key={index}
+                         className={selectedOptions[questions[currentQuestion].id]===answer.option ? 'activeChooseOption' : ''}
+                         onClick={() => handleOptionClick(answer.option, questions[currentQuestion].id)}>
+                         <label>{answer.option}</label>
+                          {answer.answerText}
+                        </Button>
+                      ))
+                      }
               </Space>
             </div>
             <div className='direction__button d-flex justify-content-end align-items-center container mt-5'>
               <Space wrap>
-                <Button >Câu trước</Button>
-                <Button >Câu tiếp theo</Button>
+                <Button onClick={handlePrevQuestion} disabled={currentQuestion === 0}>Câu trước</Button>
+                <Button onClick={handleNextQuestion} disabled={currentQuestion === questions.length-1}>Câu tiếp theo</Button>
               </Space>
             </div>
           </div>
@@ -53,13 +75,12 @@ export default function TestInCourse() {
               </div>
               <div className='all__answer__wrapper'>
                 <Space wrap style={{display:'contents'}}>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
-                  <Button icon="1" size='large'/>
+                  {
+                    questions.map((question,index) => (
+                      <Button key={index} icon={index+1} size='large'
+                      onClick={() => handleClicktoQuestion(question.id)}
+                      >- {selectedOptions[question.id] && selectedOptions[question.id]}</Button>
+                  ))}
                 </Space>
               </div>
               <div className='submit__exit__exam p-2'>

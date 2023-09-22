@@ -1,10 +1,18 @@
+.test__wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
 .question__wrapper{
+    width: 665px !important;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     height: 550px;
     background-color: white;
 }
 .answer__wrapper{
+    width: 475px !important;
     overflow-y: auto;
     background-color:#e7e8e9;
     border-top-right-radius: 5px;
@@ -66,4 +74,11 @@
     position: absolute;
     bottom: 0;
     z-index: 999;
+}
+.activeChooseOption{
+    background-color:rgb(25, 118, 210);
+    color: white;
+    &:hover{
+        color: white!important;
+    }
 }
