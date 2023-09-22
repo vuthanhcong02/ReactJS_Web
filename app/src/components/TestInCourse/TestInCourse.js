@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './TestInCourse.scss'
 import { Button,Space } from 'antd';
 import questions from './questions';
+import Timer from './Timer';
 export default function TestInCourse() {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -65,7 +66,7 @@ export default function TestInCourse() {
           <div className='col-md-5 answer__wrapper'>
               <div className='time__remaining d-flex justify-content-start flex-column align-items-center'>
                 <span>Thời gian làm bài</span>
-                <span>30 phút</span>
+                <span><Timer/></span>
               </div>
               <div>
                   <span className='d-flex justify-content-start flex-column align-items-center mt-4'>
