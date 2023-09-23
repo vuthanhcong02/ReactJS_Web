@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect ,useState} from "react";
 const Timer = ({onTimerExpired}) => {
     const [second, setSecond] = useState(0);
-    const [minute, setMinute] = useState(1);
+    const [minute, setMinute] = useState(10);
     useEffect(() => {
         let interval;
       

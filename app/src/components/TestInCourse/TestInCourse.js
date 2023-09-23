@@ -10,6 +10,7 @@ export default function TestInCourse() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [totalScore, setTotalScore] = useState(0);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -19,7 +20,7 @@ export default function TestInCourse() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleOptionClick = (option,id) => {
+  const handleOptionClick = (option,id,isCorrect) => {
     if (selectedOptions[id] === option) {
       // Nếu đáp án đã được chọn mà lại được nhấp lần nữa, hãy bỏ active nó
       setSelectedOptions({
@@ -32,6 +33,9 @@ export default function TestInCourse() {
         ...selectedOptions,
         [id]: option
       });
+    }
+    if(isCorrect){
+      setTotalScore(totalScore+1);
     }
   };
   const handleNextQuestion = () => {
@@ -49,7 +53,7 @@ export default function TestInCourse() {
   console.log(selectedOptions);
   return (
 
-    showResult ? <ShowResult/> :
+    showResult ? <ShowResult score={totalScore} length={questions.length}/> :
     <div className='container test__wrapper'>
         <div className='row'>
           <div className='col-md-7 question__wrapper'>
@@ -65,7 +69,7 @@ export default function TestInCourse() {
                          <Button block size="large"
                          key={index}
                          className={selectedOptions[questions[currentQuestion].id]===answer.option ? 'activeChooseOption' : ''}
-                         onClick={() => handleOptionClick(answer.option, questions[currentQuestion].id)}>
+                         onClick={() => handleOptionClick(answer.option, questions[currentQuestion].id,questions[currentQuestion].answerOptions[index].isCorrect)}>
                          <label>{answer.option}</label>
                           {answer.answerText}
                         </Button>
