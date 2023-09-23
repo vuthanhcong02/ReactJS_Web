@@ -82,3 +82,12 @@
         color: white!important;
     }
 }
+.result__wrapper{
+    width: 600px;
+    height: 400px;
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}

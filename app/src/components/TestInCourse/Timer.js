@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect ,useState} from "react";
-const Timer = () => {
-    const [second, setSecond] = useState(60);
-    const [minute, setMinute] = useState(60);
+const Timer = ({onTimerExpired}) => {
+    const [second, setSecond] = useState(0);
+    const [minute, setMinute] = useState(1);
     useEffect(() => {
         let interval;
       
@@ -11,6 +11,9 @@ const Timer = () => {
             if(second === 0) {
               setMinute(minute - 1);
               setSecond(59);
+            }
+            if(minute ===0 && second === 0) {
+              onTimerExpired();
             }
           }, 1000); // Cập nhật thời gian mỗi giây
       

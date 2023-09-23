@@ -1,12 +1,24 @@
 import React from 'react'
 import { useState } from 'react';
 import './TestInCourse.scss'
-import { Button,Space } from 'antd';
+import { Button,Space ,Modal} from 'antd';
 import questions from './questions';
 import Timer from './Timer';
+import ShowResult from './ShowResult';
 export default function TestInCourse() {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setShowResult(true);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const handleOptionClick = (option,id) => {
     if (selectedOptions[id] === option) {
       // Nếu đáp án đã được chọn mà lại được nhấp lần nữa, hãy bỏ active nó
@@ -31,8 +43,13 @@ export default function TestInCourse() {
   const handleClicktoQuestion = (id) => {
     setCurrentQuestion(id-1);
   }
+  const handleShowResult = () => {
+    setShowResult(true);
+  }
   console.log(selectedOptions);
   return (
+
+    showResult ? <ShowResult/> :
     <div className='container test__wrapper'>
         <div className='row'>
           <div className='col-md-7 question__wrapper'>
@@ -66,7 +83,7 @@ export default function TestInCourse() {
           <div className='col-md-5 answer__wrapper'>
               <div className='time__remaining d-flex justify-content-start flex-column align-items-center'>
                 <span>Thời gian làm bài</span>
-                <span><Timer/></span>
+                <span><Timer onTimerExpired={handleShowResult}/></span>
               </div>
               <div>
                   <span className='d-flex justify-content-start flex-column align-items-center mt-4'>
@@ -87,7 +104,10 @@ export default function TestInCourse() {
               <div className='submit__exit__exam p-2'>
                 <Space direction="vertical" style={{ width: '100%'}}>
                   <Button block size='large'>Thoát</Button>
-                <Button block type="primary" size='large' style={{backgroundColor:'rgb(25, 118, 210)'}}>Nộp bài</Button>
+                  <Button block type="primary" size='large' style={{backgroundColor:'rgb(25, 118, 210)'}} onClick={showModal}>Nộp bài</Button>
+                  <Modal title="Xác nhận" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                  <p>Bạn có chắc chắn muốn nộp bài ?</p>
+                </Modal>
                 </Space>
               </div>
           </div>
