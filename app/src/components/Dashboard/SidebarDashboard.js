@@ -31,47 +31,47 @@ const SidebarDashboard = ({collapsed, handleChange}) => {
                 {
                   key: 'overview',
                   icon: <GlobalOutlined />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin">Overview</Link>,
+                  label: 'Overview',
                 },
                 {
                   key: 'course',
                   icon: <ImportContactsIcon />,
-                  label: <Link style={{textDecoration: 'none'}} >Course</Link>,
+                  label: "Course",
                 },
                 {
                   key: 'classroom',
                   icon: <SchoolOutlinedIcon />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/classroom">ClassRoom</Link>,
+                  label: "ClassRoom",
                 },
                 {
                   key: 'test',
                   icon: <QuizOutlinedIcon />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/quiz">Test</Link>,
+                  label: "Test",
                 },
                 {
                   key: 'assignment',
                   icon: <AssignmentOutlinedIcon />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/assignment">Assignment</Link>,
+                  label: "Assignment",
                 },
                 {
                   key: 'attendance',
                   icon: <LoginOutlined />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/attendance">Attendance</Link>,
+                  label: "Attendance",
                 },
                 {
                   key: 'notification',
                   icon: <MarkUnreadChatAltOutlinedIcon />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/notification">Notification</Link>,
+                  label: "Notification",
                 },
                 {
                   key: 'enrollment',
                   icon: <HowToRegRoundedIcon />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/enrollment">Enrollment</Link>,
+                  label: "Enrollment",
                 },
                 {
                   key: 'user',
                   icon: <UserOutlined />,
-                  label: <Link style={{textDecoration: 'none'}} to="/admin/user">User</Link>,
+                  label: "User",
                 },
               ]} 
                 
