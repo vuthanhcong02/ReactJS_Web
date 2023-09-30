@@ -4,6 +4,7 @@ import Course from "../pages/MyCourse/MyCourse";
 import CourseDetail from "../pages/CourseDetail/CourseDetail";
 import DashboardAdmin from "../pages/DashboardAdmin/index.js";
 import TestInCourse from "../components/TestInCourse/TestInCourse";
+import AdminLogin from "../pages/DashboardAdmin/AdminLogin";
 const publicRoutes = [
     {
         path: '/',
@@ -17,7 +18,7 @@ const publicRoutes = [
         path: '/my-courses',
         component: Course
     },
-    // {path: 'admin/login', component: AdminLogin},
+    {path: 'admin/login', component: AdminLogin},
 ];
 
 const privateRoutes = [

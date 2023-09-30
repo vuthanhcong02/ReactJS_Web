@@ -1,12 +1,17 @@
 import React from "react";
 import { UserOutlined, SettingOutlined, LogoutOutlined} from "@ant-design/icons";
 import { Dropdown, message, Space} from "antd";
-const handleButtonClick = (e) => {
-  message.info("Click on left button.");
-  console.log("click left button", e);
-};
 const handleMenuClick = (e) => {
   message.info("Click on menu item.");
+  if (e.key === "1") {
+    console.log("click 1");
+  }
+  if (e.key === "2") {
+    console.log("click 2");
+  }
+  if (e.key === "3") {
+    window.location.href = "admin/login";
+  }
   console.log("click", e);
 };
 export default function ProfileSetting() {
@@ -24,7 +29,7 @@ export default function ProfileSetting() {
         {
           label: "Đăng xuất",
           key: "3",
-          icon: <LogoutOutlined />
+          icon:<LogoutOutlined />
         }
     ];
     const menuProps = {
