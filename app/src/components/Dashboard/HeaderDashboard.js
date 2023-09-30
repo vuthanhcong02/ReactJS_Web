@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Button, theme } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import ProfileSetting from "./ProfileSetting";
 const HeaderDashboard = ({handleToggle, collapsed}) => {
   const { Header } = Layout;
 
@@ -10,9 +11,11 @@ const HeaderDashboard = ({handleToggle, collapsed}) => {
   return (
     <>
       <Header
+        className="header__dashboard"
         style={{
           padding: 0,
           background: colorBgContainer,
+          display: "flex",
         }}
       >
         <Button
@@ -25,6 +28,9 @@ const HeaderDashboard = ({handleToggle, collapsed}) => {
             height: 64,
           }}
         />
+        <div className="profile__setting container d-flex justify-content-end" style={{paddingRight: '30px'}}>
+            <ProfileSetting/>
+        </div>
       </Header>
     </>
   );
