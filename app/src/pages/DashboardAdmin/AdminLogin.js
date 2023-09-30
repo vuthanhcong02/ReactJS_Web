@@ -41,7 +41,7 @@ const AdminLogin = () => {
               },
             ]}
           >
-            <Input />
+            <Input type="email"/>
           </Form.Item>
           <Form.Item
             name="password"
@@ -52,7 +52,7 @@ const AdminLogin = () => {
               },
             ]}
           >
-            <Input />
+            <Input type="password"/>
           </Form.Item>
           <Form.Item>
             <Space style={{ display: 'flex', justifyContent: 'center' }}>

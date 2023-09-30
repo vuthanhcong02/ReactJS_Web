@@ -25,7 +25,7 @@ const DashboardAdmin = () => {
   }
   const handleChange = (key) => {
     setSelectedMenu(key);
-    window.history.pushState({}, '', `/admin/${key}`);
+    // window.history.pushState({}, '', `/admin/${key}`);
   }
   const renderContent = () => {
     switch (selectedMenu) {
