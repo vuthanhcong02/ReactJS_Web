@@ -5,12 +5,14 @@ import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
 import './components/GlobalStyles/GlobalStyles.module.scss'
 import reportWebVitals from "./reportWebVitals";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {AuthProvider} from './context/AuthContext'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStyles>
-      <App />
+      <AuthProvider>
+        <App />
+        </AuthProvider>
     </GlobalStyles>
   </React.StrictMode>
 );

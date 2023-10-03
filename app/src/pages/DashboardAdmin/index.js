@@ -1,4 +1,5 @@
 import React ,{useState,useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import { Layout} from 'antd';
 import HeaderDashboard from '../../components/Dashboard/HeaderDashboard';
 import SidebarDashboard from '../../components/Dashboard/SidebarDashboard';
@@ -12,8 +13,19 @@ import AttendanceControl from './AttendanceControl';
 import TestControl from './TestControl';
 import AssignmentControl from './AssignmentControl';
 import { theme } from 'antd';
-
+import useAuthContext from '../../context/AuthContext';
 const DashboardAdmin = () => {
+  const navigate = useNavigate();
+  const {user} = useAuthContext();
+  useEffect(() => {
+    const storageUser = JSON.parse(localStorage.getItem('user'));
+    if(Object.keys(user).length === 0){
+      navigate('/admin/login');
+    }
+    if(storageUser && (storageUser.user.role === 'admin'||storageUser.user.role === 'teacher')){
+      navigate('/admin');
+    }
+  },[]);
   const { Content } = Layout;
   const {
       token: { colorBgContainer },
