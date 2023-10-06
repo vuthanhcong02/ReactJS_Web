@@ -1,27 +1,102 @@
 import React ,{ useState, useEffect } from 'react';
 import { Table ,Button, Input} from 'antd';
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined , SearchOutlined} from '@ant-design/icons';
 import UserApi from '../../api/apiUser';
-const { Search } = Input;
 const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    filters: [
-      {
-        
-      }
-    ],
-    filterSearch: true,
+    filterDropdown : ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => {
+      return (
+        <div style={{ padding: 8 ,display: 'flex', flexDirection: 'column'}}>
+          <Input
+            autoFocus
+            placeholder="Search name"
+            style={{ width: 200 }}
+            onChange={(event)=>{
+              setSelectedKeys(event.target.value ? [event.target.value] :[]);
+              confirm({clearFilters: false});
+            }}
+            value={selectedKeys[0]}
+            onPressEnter={()=>{
+              confirm();
+            }}
+            onBlur={()=>{
+              confirm();
+            }}
+            >
+          </Input>
+          <div>
+            <Button type="primary" style={{ width: 50 ,alignSelf: 'end',padding: 5 ,margin: 5}}
+              onClick={() => {
+                confirm();
+                clearFilters();
+              }}
+              >Search</Button>
+            <Button style={{ width: 50 ,alignSelf: 'end',padding: 5 ,marginTop: 5}} 
+              onClick={() => clearFilters()}>
+              Clear</Button>
+          </div>
+        </div>
+      );
+    },
+    filterIcon: (filtered) => {
+      return <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />;
+    },
+    // filterSearch: true,
     // sort by a-z
-    onFilter: (value, record) => record.name.startsWith(value),
-    
+    onFilter: (value, record) => {
+    return record.name.toLowerCase().includes(value.toLowerCase());
+    },
     width: '25%',
+
   },
 
   {
     title: 'Email',
     dataIndex: 'email',
+    filterDropdown : ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => {
+      return (
+        <div style={{ padding: 8 ,display: 'flex', flexDirection: 'column'}}>
+          <Input
+            autoFocus
+            placeholder="Search by email"
+            style={{ width: 200 }}
+            onChange={(event)=>{
+              setSelectedKeys(event.target.value ? [event.target.value] :[]);
+              confirm({clearFilters: false});
+            }}
+            value={selectedKeys[0]}
+            onPressEnter={()=>{
+              confirm();
+            }}
+            onBlur={()=>{
+              confirm();
+            }}
+            >
+          </Input>
+          <div>
+            <Button type="primary" style={{ width: 50 ,alignSelf: 'end',padding: 5 ,margin: 5}}
+              onClick={() => {
+                confirm();
+                clearFilters();
+              }}
+              >Search</Button>
+            <Button style={{ width: 50 ,alignSelf: 'end',padding: 5 ,marginTop: 5}} 
+              onClick={() => clearFilters()}>
+              Clear</Button>
+          </div>
+        </div>
+      );
+    },
+    filterIcon: (filtered) => {
+      return <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />;
+    },
+    // filterSearch: true,
+    // sort by a-z
+    onFilter: (value, record) => {
+    return record.email.toLowerCase().includes(value.toLowerCase());
+    },
     width: '30%',
   },
   {
@@ -52,15 +127,6 @@ const columns = [
     )
   }
 ];
-const onChange = (pagination, filters, sorter, extra) => {
-  // console.log('params', pagination, filters, sorter, extra);
-  if(pagination.pageSize !== 10){
-    pagination.pageSize = 5;
-    pagination.current = 1;
-
-  }
-
-};
 const UserControl = () => {
   const [dataUser, setDataUser] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
@@ -74,7 +140,7 @@ const UserControl = () => {
     fetchData();
   },[]);
   return (
-  <Table columns={columns} dataSource={dataUser} onChange={onChange} pagination={{ pageSize: 4 }} 
+  <Table columns={columns} dataSource={dataUser}  pagination={{ pageSize: 4 }} 
           bordered title={() => 'User Control'} size="middle" style={{ width: '100%',textAlign: 'center'
           }} loading={loadingData}>
   </Table>
