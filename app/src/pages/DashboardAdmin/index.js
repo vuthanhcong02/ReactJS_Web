@@ -6,7 +6,7 @@ import SidebarDashboard from '../../components/Dashboard/SidebarDashboard';
 import MainDashboard from '../../components/Dashboard/MainDashboard';
 import ClassControl from './ClassControl';
 import CourseControl from './CourseControl';
-import UserControl from './UserControl';
+import UserControl from './UserControl/UserControl';
 import EnrollmentControl from './EnrollmentControl';
 import NotificationControl from './NotificationControl';
 import AttendanceControl from './AttendanceControl';

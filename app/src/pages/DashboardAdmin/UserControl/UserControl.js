@@ -1,7 +1,8 @@
 import React ,{ useState, useEffect } from 'react';
-import { Table ,Button, Input} from 'antd';
+import { Table ,Button, Input,Modal} from 'antd';
 import {EditOutlined, DeleteOutlined , SearchOutlined} from '@ant-design/icons';
-import UserApi from '../../api/apiUser';
+import UserApi from '../../../api/apiUser';
+import AddUserForm from './AddUserForm';
 const columns = [
   {
     title: 'Name',
@@ -128,6 +129,7 @@ const columns = [
   }
 ];
 const UserControl = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataUser, setDataUser] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
   useEffect(() => {
@@ -139,11 +141,26 @@ const UserControl = () => {
     };
     fetchData();
   },[]);
+  const updateUserList = async () => {
+    const response = await UserApi.getAll();
+    setDataUser(response.data.users);
+  };
+  
   return (
-  <Table columns={columns} dataSource={dataUser}  pagination={{ pageSize: 4 }} 
-          bordered title={() => 'User Control'} size="middle" style={{ width: '100%',textAlign: 'center'
-          }} loading={loadingData}>
-  </Table>
+  <div>
+    <Button type="primary" style={{padding: 5 ,margin: 5}} onClick={() => setIsModalOpen(true)}>Add User</Button>
+    <Modal title="Add User" open={isModalOpen} onCancel={() => setIsModalOpen(false)}
+      footer={[
+      ]}
+    >
+      <AddUserForm handleClose={() => setIsModalOpen(false)} updateData={updateUserList}/>
+    </Modal>
+    <Table columns={columns} dataSource={dataUser}  pagination={{ pageSize: 4 }} 
+            bordered title={() => 'User Control'} size="middle" style={{ width: '100%',textAlign: 'center'
+            }} loading={loadingData}>
+    </Table>
+  </div>
+ 
   )
 }
 export default UserControl;
